@@ -52,3 +52,4 @@ int main(int argc, char** argv) {
         std::cerr << "[go2_grand_ICT_v2] exception: " << e.what() << std::endl;
         return -10;
     }
+}
