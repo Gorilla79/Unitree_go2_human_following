@@ -9,7 +9,7 @@ from std_msgs.msg import String
 from sensor_msgs.msg import CompressedImage
 
 # 좌표계 캔버스(mm -> px 간단 스케일)
-SCALE = 0.3  # 1mm -> 0.2px  (1m=1000mm -> 200px)
+SCALE = 0.2  # 1mm -> 0.2px  (1m=1000mm -> 200px)
 
 class HostViewer(Node):
     def __init__(self):
@@ -26,7 +26,7 @@ class HostViewer(Node):
         self.last_meta = None
 
         cv2.namedWindow("Grand-Host", cv2.WINDOW_NORMAL)
-        cv2.resizeWindow("Grand-Host", 640, 480)
+        cv2.resizeWindow("Grand-Host", 1280, 960)
         cv2.namedWindow("Target-Image", cv2.WINDOW_NORMAL)
         cv2.resizeWindow("Target-Image", 640, 360) 
 
@@ -90,9 +90,9 @@ class HostViewer(Node):
 
     def loop(self):
         # 좌표계 캔버스
-        canvas = np.ones((360, 640, 3), dtype=np.uint8) * 255
+        canvas = np.ones((720, 1280, 3), dtype=np.uint8) * 255
         # 원점(로봇) 표시 (아래쪽 중앙보다 조금 아래)
-        origin = (640, 820)  # (cx, cy) pixel
+        origin = (640, 720)  # (cx, cy) pixel
         cv2.circle(canvas, origin, 6, (0,0,0), -1)
         cv2.putText(canvas, "ROBOT(0,0)", (origin[0]+10, origin[1]-10),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1)
