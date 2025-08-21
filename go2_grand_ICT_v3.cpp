@@ -45,11 +45,11 @@ int main(int argc, char** argv) {
             sport.Move(0.0f, 0.0f, 0.0f);
             return 0;
         } else if (cmd == "scrape") {
-            sport_client.Scrape();
+            sport.Scrape();
             sleep(5);
             return 0
         } else if (cmd == "sit") {
-            sport_client.Sit();
+            sport.Sit();
             sleep(5);
             return 0
         } else {
